@@ -21,5 +21,6 @@
             arrowsW:5,//箭头的大小//
             toptile: '折线图dome' // 图的标题
         })
+
 ```
 ### 2、pieChart(圆饼图)
