@@ -23,20 +23,22 @@
     })
  }} }
 ### 2、pieChart(圆饼图)
- var  data =[
-        {
-           'val':0.3,//比例
-           'color':'#3385ff',//扇形颜色
-           'title':'社会招聘'// 扇形描述
-         }
-    ];
-    var ehacr = new Ehart(data,'canvas');
-    ehacr.pieChart({
-        centerX:280, // 中心横坐标
-        centerY:280,//中心纵轴坐标
-        radius:80, //半径
-        beyondW:20, // 向外延伸的距离
-        tipcW:130 ,// 位置下方的长
-        font:"12px Arial", // 字体样式
-        toptile: '饼状图dome' // 图的标题
-    });
+{ {{
+     var  data =[
+            {
+               'val':0.3,//比例
+               'color':'#3385ff',//扇形颜色
+               'title':'社会招聘'// 扇形描述
+             }
+        ];
+        var ehacr = new Ehart(data,'canvas');
+        ehacr.pieChart({
+            centerX:280, // 中心横坐标
+            centerY:280,//中心纵轴坐标
+            radius:80, //半径
+            beyondW:20, // 向外延伸的距离
+            tipcW:130 ,// 位置下方的长
+            font:"12px Arial", // 字体样式
+            toptile: '饼状图dome' // 图的标题
+        });
+     }} }
