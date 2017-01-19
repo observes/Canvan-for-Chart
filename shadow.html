@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>canvas_shadow</title>
+    <style>
+        #dome1{
+            border: 1px solid #333;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="600" height="600" id="dome1">
+
+    </canvas>
+<script>
+    /*dome1*/
+    var canvas = document.querySelector("#dome1");
+//    上下文对象
+    var ctx = canvas.getContext('2d');
+//    阴影
+    ctx.fillStyle='rgba(255,0,0,.8)';
+    ctx.shadowColor='#ff0';
+    ctx.shadowBlur=10;
+    ctx.shadowOffsetX=10;
+    ctx.shadowOffsetY=10;
+    ctx.fillRect(200,200,100,100);
+//    渐变
+    ctx.beginPath();
+    var grd = ctx.createLinearGradient(0,0,100,100);
+    grd.addColorStop(0,'#00f');
+    grd.addColorStop(0.4,'#fff');
+    grd.addColorStop(1,'#f00');
+    ctx.fillStyle= grd;
+    ctx.fillRect(0,0,100,100);
+// j
+</script>
+</body>
+</html>

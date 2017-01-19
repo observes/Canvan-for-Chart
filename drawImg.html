@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>canvas图片</title>
+    <style>
+        #dome1{
+            border: 1px solid #333;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="600" height="600" id="dome1">
+
+    </canvas>
+    <input type="button" value="↑" data-dir="top">
+    <input type="button" value="←" data-dir="left">
+    <input type="button" value="↓" data-dir="bottom">
+    <input type="button" value="→" data-dir="right">
+    <script src="./src/Ehart.js"></script>
+    <script>
+    var canvas = document.querySelector("#dome1");
+//    上下文对象
+    var ctx = canvas.getContext('2d');
+    var  s =  new Sprite({
+        x:300,
+        y:300,
+        w:80,
+        h:65*2,
+        fps:10,
+        originW:40,
+        originH:65,
+        imgSrc:'./imgs/gameImgs/DMMban.png',
+        dirIndex:0
+    });
+    s.render(ctx);
+    var arrInput= document.querySelectorAll('input');
+    for(let i= 0;i<arrInput.length;i++){
+        arrInput[i].onclick =function(){
+            s.changeDir(this.getAttribute('data-dir'));
+        }
+    }
+</script>
+</body>
+</html>

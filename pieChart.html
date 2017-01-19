@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>pieChart</title>
+    <style>
+        #canvas{
+            border:1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="600" height="600">
+    </canvas>
+    <script src="./src/Ehart.js"></script>
+<script>
+    var  data =[
+        {
+            'val':0.2,
+            'color':'red',
+            'title':'应届生'
+         },
+        {
+            'val':0.3,
+            'color':'#3385ff',
+            'title':'社会招聘'
+        },
+        {
+            'val':0.15,
+            'color':'#f0f',
+            'title':'内部推荐'
+        },
+        {
+            'val': 0.05,
+            'color': '#666',
+            'title': '猎头推荐'
+        },
+        {
+            'val': 0.3,
+            'color': '#abcdef',
+            'title': '社会招聘'
+        }
+    ];
+    var ehacr = new Ehart(data,'canvas');
+    ehacr.pieChart({
+        centerX:280, // 中心横坐标
+        centerY:280,//中心纵轴坐标
+        radius:80, //半径
+        beyondW:20, // 向外延伸的距离
+        tipcW:130 ,// 位置下方的长
+        font:"12px Arial", // 字体样式
+        toptile: '饼状图dome' // 图的标题
+    });
+</script>
+</body>
+</html>
