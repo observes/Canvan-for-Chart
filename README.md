@@ -1,7 +1,7 @@
 # Canvan-for-Chart(数据展示)
    对日常开发工作的数据展示<br>
 ### 1、lineChart(折线图)
-{ {{
+```
     var data =[{
         x: //数据点X轴
         y: //数据点Y轴
@@ -21,6 +21,5 @@
             arrowsW:5,//箭头的大小//
             toptile: '折线图dome' // 图的标题
         })
-
- }} }
+```
 ### 2、pieChart(圆饼图)
