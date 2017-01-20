@@ -63,16 +63,16 @@ var  data =[
 ### 4、rectangle(矩形)
 ```javascript
  var  rectangleDome = new Rectangle({
-        x:0 ,
-        y:0,
-        w:50,
-        h:50,
-        rotation:45,
-         opacity:0.5,
-        scaleX:2,
-        scaleY:2,
-        strokeStyle :'#f00',
-        fillStyle:'#eee'
+        x:0 ,//绘制矩形X坐标
+        y:0,//绘制矩形Y坐标
+        w:50,//绘制矩形宽度
+        h:50,//绘制矩形高度
+        rotation:45,//旋转角度
+        opacity:0.5,//透明度
+        scaleX:2,//X方向放缩比例
+        scaleY:2,//Y方向放缩比例
+        strokeStyle :'#f00',// 边框的颜色
+        fillStyle:'#eee' //填充颜色
     });
     rectangleDome.render(ctx);
  ```
