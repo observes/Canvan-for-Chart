@@ -19,6 +19,7 @@
         },
         render:function(ctx){
                 ctx.save();
+                ctx.beginPath();
                 ctx.rotate(this.rotation*Math.PI/180);
                 ctx.globalAlpha =this.opacity;
                 ctx.scale(this.scaleX,this.scaleY);
