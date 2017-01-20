@@ -23,15 +23,15 @@
 //    上下文对象
     var ctx = canvas.getContext('2d');
     var  s =  new Sprite({
-        x:300,
-        y:300,
-        w:80,
-        h:65*2,
-        fps:10,
-        originW:40,
-        originH:65,
-        imgSrc:'./imgs/gameImgs/DMMban.png',
-        dirIndex:0
+        x:300,//图片绘制的X轴方向
+        y:300,//图片绘制的Y轴方向
+        w:80,//背景图片绘制在画布的宽
+        h:65*2,//景图片绘制在画布的高
+        fps:10,//帧速
+        originW:40,//背景图片的宽
+        originH:65,//背景图片的高
+        imgSrc:'./imgs/gameImgs/DMMban.png',//背景图片的地址
+        dirIndex:0//背景图片方向
     });
     s.render(ctx);
     var arrInput= document.querySelectorAll('input');

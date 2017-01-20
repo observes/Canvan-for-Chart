@@ -45,18 +45,18 @@ var  data =[
 ### 3、 Frame Animation(帧动画)
 ```javascript
     var  s =  new Sprite({
-            x:300,
-            y:300,
-            w:80,
-            h:65*2,
-            fps:10,
-            originW:40,
-            originH:65,
-            imgSrc:'./imgs/gameImgs/DMMban.png',
-            dirIndex:0
+        x:300,//图片绘制的X轴方向
+        y:300,//图片绘制的Y轴方向
+         w:80,//背景图片绘制在画布的宽
+         h:65*2,//景图片绘制在画布的高
+        fps:10,//帧速
+        originW:40,//背景图片的宽
+        originH:65,//背景图片的高
+        imgSrc:'./imgs/gameImgs/DMMban.png',//背景图片的地址
+         dirIndex:0//背景图片方向
     });
     // 渲染函数
-     s.render(ctx);
+     s.render(ctx);//ctx:canvan上下文对象
      //方向（'top','right','bottom','left'）;
      s.changeDir(dir);
 ```
@@ -74,5 +74,5 @@ var  data =[
         strokeStyle :'#f00',// 边框的颜色
         fillStyle:'#eee' //填充颜色
     });
-    rectangleDome.render(ctx);
+    rectangleDome.render(ctx);//ctx:canvan上下文对象
  ```

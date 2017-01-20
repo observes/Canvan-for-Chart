@@ -13,6 +13,7 @@
     <canvas width="600" height="600" id="dome1">
 
     </canvas>
+    <img src="" alt="" id="imgDom">
     <script src="./src/Rectangle.js"></script>
 <script>
     var canvas = document.querySelector("#dome1");
@@ -20,11 +21,11 @@
     var ctx = canvas.getContext('2d');
     var  rectangleDome = new Rectangle({
         x:0 ,
-        y:0,
+        y:30,
         w:50,
         h:50,
-        rotation:45,
-         opacity:0.5,
+        rotation:0,
+        opacity:0.5,
         scaleX:2,
         scaleY:2,
         strokeStyle :'#f00',
@@ -32,6 +33,15 @@
         fillStyle:'#eee'
     });
     rectangleDome.render(ctx);
+    setInterval(function(){
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        rectangleDome.x +=10;
+        rectangleDome.render(ctx);
+        //画布保存base64编码
+        var imgPic =canvas.toDataURL("image/png", 1.0);
+        document.getElementById('imgDom').src=imgPic;
+        //console.log(imgPic);
+    },100)
 </script>
 </body>
 </html>
