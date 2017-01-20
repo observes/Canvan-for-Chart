@@ -42,3 +42,21 @@ var  data =[
         toptile: '饼状图dome' // 图的标题
     });
 ```
+### 3、 Frame Animation(帧动画)
+```javascript
+    var  s =  new Sprite({
+            x:300,
+            y:300,
+            w:80,
+            h:65*2,
+            fps:10,
+            originW:40,
+            originH:65,
+            imgSrc:'./imgs/gameImgs/DMMban.png',
+            dirIndex:0
+    });
+    // 渲染函数
+     s.render(ctx);
+     //方向（'top','right','bottom','left'）;
+     s.changeDir(dir);
+```

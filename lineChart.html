@@ -12,7 +12,7 @@
 <body>
     <canvas id="canvas" width="900" height="600">
     </canvas>
-    <script src="./src/Ehart.js"></script>
+    <script src="src/Chart.js"></script>
 <script>
     var data=[
 
@@ -25,8 +25,8 @@
             title:'实例'+i
         })
     }
-    var eachr = new Ehart(data,'canvas');
-    eachr.lineChar({
+    var cachr = new Chart(data,'canvas');
+    cachr.lineChar({
         rectH:10,//网格线的长度
         rectStyle:'#eee',//网格线的长度
         originW:2,//轴线的宽度

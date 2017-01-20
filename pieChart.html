@@ -12,7 +12,7 @@
 <body>
     <canvas id="canvas" width="600" height="600">
     </canvas>
-    <script src="./src/Ehart.js"></script>
+    <script src="src/Chart.js"></script>
 <script>
     var  data =[
         {
@@ -41,8 +41,8 @@
             'title': '社会招聘'
         }
     ];
-    var ehacr = new Ehart(data,'canvas');
-    ehacr.pieChart({
+    var chacr = new Chart(data,'canvas');
+    chacr.pieChart({
         centerX:280, // 中心横坐标
         centerY:280,//中心纵轴坐标
         radius:80, //半径

@@ -4,7 +4,7 @@
      * @param data 数据参数  (Array)
      * @param canvasId  画布id （string）
      */
-    var  Ehart =function(data,canvasId){
+    var  Chart =function(data,canvasId){
         if(!document.getElementById(canvasId)){
             throw  new Error('canvasId is error');
         }
@@ -15,7 +15,7 @@
         this.canvas =document.getElementById(canvasId);
     };
     /*折线图*/
-    Ehart.prototype.lineChar =function(opts){
+    Chart.prototype.lineChar =function(opts){
         var _self=this;
         var canvas = _self.canvas;
         var data = _self.data;
@@ -70,7 +70,7 @@
         }
     };
     /*饼状图*/
-    Ehart.prototype.pieChart =function(opts){
+    Chart.prototype.pieChart =function(opts){
         var _self=this;
         var canvas = _self.canvas;
         var data = _self.data;
@@ -122,62 +122,7 @@
         ctx.fillStyle = '#000';
         ctx.fillText(opts.toptile,canvas.width/2,50);
     };
-    window.Ehart = Ehart;
-//  图片动画
-    var Sprite =function(opts){
-        this._init(opts)
-    };
-    Sprite.prototype={
-        //初始化参数
-        _init:function(opts){
-                //在画布什么位置绘制
-                this.x =  opts.x ===0 ? opts.x : opts.x ||10;
-                this.y = opts.y===0 ? opts.y : opts.y|| 10;
-                //在canva 绘制的图片的大小
-                this.w = opts.w ||40;
-                this.h = opts.h ||65;
-                //图片信息
-                this._imgSrc = opts.imgSrc||'';
-                //方向和速度
-                this.fps = opts.fps||10;
-                this.dirIndex = opts.dirIndex||0;
-                //背景图片大小
-                this.originW  = opts.originW|| 40;
-                this.originH  = opts.originH|| 65;
-            },
-        //渲染方法
-            render:function(ctx){
-                var _self  =this;
-                var imgDom = new  Image();
-                imgDom.src  =_self._imgSrc;
-                imgDom.onload =  function(){
-                    var franeIdenx =0;
-                    setInterval(function(){
-                            ctx.clearRect(0,0,ctx.canvas.width,ctx.canvas.height);
-                            ctx.drawImage(
-                                imgDom,
-                                _self.originW*franeIdenx,
-                                _self.originH*_self.dirIndex,
-                                _self.originW,_self.originH,
-                                _self.x,_self.y,
-                                _self.w,_self.h
-                            );
-                            franeIdenx ++;
-                            franeIdenx = franeIdenx%4;
-                        },1000/_self.fps);
-                };
-            },
-        //    改变方向
-            changeDir:function(dir){
-            if(typeof dir !== 'string'){
-                return;
-            }
-            var _dirNum= [0,2,3,1];
-            var _dirStr= ['top','right','bottom','left'];
-            this.dirIndex = _dirNum[ _dirStr.indexOf(dir)]
-        }
-    };
-    window.Sprite = Sprite;
+    window.Chart = Chart;
 })(window);
 
 
