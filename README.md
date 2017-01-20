@@ -1,7 +1,7 @@
 # Canvan-for-Chart(数据展示)
    对日常开发工作的数据展示<br>
 ### 1、lineChart(折线图)
-```
+```javascript
     var data =[{
         x: //数据点X轴
         y: //数据点Y轴
