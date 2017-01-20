@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>canvas_rectangle</title>
+    <style>
+        #dome1{
+            border: 1px solid #333;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="600" height="600" id="dome1">
+
+    </canvas>
+    <script src="./src/Rectangle.js"></script>
+<script>
+    var canvas = document.querySelector("#dome1");
+//    上下文对象
+    var ctx = canvas.getContext('2d');
+    var  rectangleDome = new Rectangle({
+        x:0 ,
+        y:0,
+        w:50,
+        h:50,
+        rotation:45,
+         opacity:0.5,
+        scaleX:2,
+        scaleY:2,
+        strokeStyle :'#f00',
+        lineWidth:5,
+        fillStyle:'#eee'
+    });
+    rectangleDome.render(ctx);
+</script>
+</body>
+</html>
