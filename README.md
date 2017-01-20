@@ -60,3 +60,19 @@ var  data =[
      //方向（'top','right','bottom','left'）;
      s.changeDir(dir);
 ```
+### 4、rectangle(矩形)
+```javascript
+ var  rectangleDome = new Rectangle({
+        x:0 ,
+        y:0,
+        w:50,
+        h:50,
+        rotation:45,
+         opacity:0.5,
+        scaleX:2,
+        scaleY:2,
+        strokeStyle :'#f00',
+        fillStyle:'#eee'
+    });
+    rectangleDome.render(ctx);
+ ```
