@@ -23,7 +23,7 @@
         })
 ```
 ### 2、pieChart(圆饼图)
-```
+```javascript
 var  data =[
         {
             'val':0.2,//比例
