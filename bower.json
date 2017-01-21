@@ -1,0 +1,20 @@
+{
+  "name": "Canvan-for-Chart",
+  "homepage": "https://github.com/observes/Canvan-for-Chart",
+  "authors": [
+    "Administrator <18200209182@163.com>"
+  ],
+  "description": "''",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "konva": "^1.3.0"
+  }
+}

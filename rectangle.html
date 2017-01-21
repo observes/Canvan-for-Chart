@@ -38,9 +38,7 @@
         rectangleDome.x +=10;
         rectangleDome.render(ctx);
         //画布保存base64编码
-        var imgPic =canvas.toDataURL("image/png", 1.0);
-        document.getElementById('imgDom').src=imgPic;
-        //console.log(imgPic);
+        document.getElementById('imgDom').src=canvas.toDataURL("image/png", 1.0);
     },100)
 </script>
 </body>

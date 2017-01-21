@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>progressBar</title>
+    <style>
+        body{
+            padding: 0;
+            margin: 0;
+            background-color: #eee;
+            overflow: hidden;
+        }
+    </style>
+    <script src="https://cdn.rawgit.com/konvajs/konva/1.3.0/konva.js"></script>
+</head>
+<body>
+    <div id="container"></div>
+    <script>
+        //创建舞台
+        var stage = new  Konva.Stage({
+            container:'container',
+            width:window.innerWidth,
+            height:window.innerHeight
+        });
+        //创建层
+        var layer = new Konva.Layer();
+        stage.add(layer);
+        //中心点坐标
+        var cenX = stage.width()/2;
+        var cenY = stage.height()/2;
+        // 进度条
+        var maxWidth = 500;
+        var  innerRect =new Konva.Rect({
+            x:1/8*stage.width(),
+            y:1/8*stage.height(),
+            width:0,
+            height:20,
+            opacity:.1,
+            fill:'#33b1e0',
+            cornerRadius:10
+        });
+        // 放到层
+        layer.add(innerRect);
+        var outerRect = new  Konva.Rect({
+            x:1/8*stage.width(),
+            y:1/8*stage.height(),
+            height:20,
+            width:maxWidth,
+            stroke:'#f08200',
+            strokeWidth:2,
+            cornerRadius:10
+        });
+        // 放到层
+        layer.add(outerRect);
+        // 绘制
+        layer.draw();
+        // 图片数组
+        var  imgSrcArr =['./imgs/bb.png','./imgs/bg.jpg','./imgs/b1b.png'];
+        var loadImgIndex=0;
+        for (var i =0;i<imgSrcArr.length;i++){
+            var imgDom = new  Image();
+            imgDom.src= imgSrcArr[i];
+            imgDom.onload=function(){
+                loadImgIndex++;
+                // kanva 动画系统
+                innerRect.to({
+                    width:maxWidth*(loadImgIndex/imgSrcArr.length),
+                    opacity:1,
+                    duration:2,
+                    esing:Konva.Easings.Linear
+                });
+               // console.log(loadImgIndex);
+            };
+            imgDom.onerror=function(ev){
+               // console.log(ev);
+            }
+        }
+
+    </script>
+</body>
+</html>
