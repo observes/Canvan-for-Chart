@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>canvas_transform</title>
+    <style>
+        body{
+            padding: 0;
+            margin: 0;
+            background-color: #eee;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+        <div id="container"></div>
+        <script src="https://cdn.rawgit.com/konvajs/konva/1.3.0/konva.js"></script>
+        <script src="./src/CircleText.js"></script>
+<script>
+    //创建舞台
+    var stage = new  Konva.Stage({
+        container:'container',
+        width:window.innerWidth,
+        height:window.innerHeight
+    });
+    //中心点坐标
+    var cenX = stage.width()/2;
+    var cenY = stage.height()/2;
+    //创建背景层
+    var bgLayer = new Konva.Layer();
+    stage.add(bgLayer);
+    var innnerRaduis = 300;
+    var outerRaduis = 200;
+    //   里面虚线小圆
+    var innnerCircle = new Konva.Circle({
+        x:cenX,
+        y:cenY,
+        radius:innnerRaduis,
+        stroke:"#dadbe0",
+        strokeWidth:4,
+        dash:[10,4] // 虚线
+    });
+    bgLayer.add(innnerCircle);
+    //   里面虚线大圆
+    var outerCircle = new Konva.Circle({
+        x:cenX,
+        y:cenY,
+        radius:outerRaduis,
+        stroke:"#dadbe0",
+        strokeWidth:4,
+        dash:[10,4] // 虚线[width，gap]
+    });
+    bgLayer.add(outerCircle);
+    var cenCircle = new CircleText({
+        x:cenX,
+        y:cenY,
+        innerRadius: 100,
+        outerRadius: 150,
+        outerStley:'#ccc',
+        innerStley:'#525ab2',
+        text:'web开发',
+        fontSize: 30,
+        fontColor:'#fff'
+    });
+    cenCircle.add(bgLayer);
+    bgLayer.draw();
+//    L2动画层
+    var L2_animateLayer = new Konva.Layer();
+    stage.add(L2_animateLayer);
+    var L2_group = new Konva.Group({
+        x:cenX,
+        y:cenY
+    });
+//    计算园环的坐标
+    var X0= outerRaduis*Math.cos(-60*Math.PI/180);
+    var Y0= outerRaduis*Math.sin(-60*Math.PI/180);
+    var L2_circle_Html5= new CircleText({
+        x:X0,
+        y:Y0,
+        innerRadius: 20,
+        outerRadius: 30,
+        outerStley:'#ccc',
+        innerStley:'pink',
+        text:'Html5',
+        fontSize: 12,
+        fontColor:'#fff'
+    });
+    L2_circle_Html5.add(L2_group);
+//    计算园环的坐标
+    var X1= outerRaduis*Math.cos(45*Math.PI/180);
+    var Y1= outerRaduis*Math.sin(45*Math.PI/180);
+    var L2_circle_Css3= new CircleText({
+        x:X1,
+        y:Y1,
+        innerRadius: 20,
+        outerRadius: 30,
+        outerStley:'#ccc',
+        innerStley:'#0ff',
+        text:'Css3',
+        fontSize: 12,
+        fontColor:'#fff'
+    });
+//    计算园环的坐标
+    L2_circle_Css3.add(L2_group);
+    var X3= outerRaduis*Math.cos(-112*Math.PI/180);
+    var Y3= outerRaduis*Math.sin(-112*Math.PI/180);
+    var L2_circle_javaSrcipt= new CircleText({
+        x:X3,
+        y:Y3,
+        innerRadius: 20,
+        outerRadius: 30,
+        outerStley:'#ccc',
+        innerStley:'#00f',
+        text:'Css3',
+        fontSize: 12,
+        fontColor:'#fff'
+    });
+    L2_circle_javaSrcipt.add(L2_group);
+    L2_animateLayer.add(L2_group);
+    L2_animateLayer.draw();
+//    动画系统
+    var rotateAnglePross =60;
+    var animate =new Konva.Animation(function(frame){
+        var rotateAngle=rotateAnglePross*frame.timeDiff/1000;
+        L2_group.rotate(rotateAngle);
+        L2_group.getChildren().each(function(item,index){
+            item.rotate(-rotateAngle)
+        })
+    },L2_animateLayer);
+    animate.start();
+</script>
+</body>
+</html>
