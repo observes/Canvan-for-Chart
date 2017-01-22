@@ -56,27 +56,25 @@
         // 绘制
         layer.draw();
         // 图片数组
-        var  imgSrcArr =['./imgs/bb.png','./imgs/bg.jpg','./imgs/b1b.png'];
+        var  imgSrcArr =['./imgs/bb.png','./imgs/bg.jpg','./imgs/bb.png','./imgs/tb.png','./imgs/th.png'];
         var loadImgIndex=0;
         for (var i =0;i<imgSrcArr.length;i++){
-            var imgDom = new  Image();
-            imgDom.src= imgSrcArr[i];
-            imgDom.onload=function(){
-                loadImgIndex++;
-                // kanva 动画系统
-                innerRect.to({
-                    width:maxWidth*(loadImgIndex/imgSrcArr.length),
-                    opacity:1,
-                    duration:2,
-                    esing:Konva.Easings.Linear
-                });
-               // console.log(loadImgIndex);
-            };
-            imgDom.onerror=function(ev){
-               // console.log(ev);
+                var imgDom = new  Image();
+                imgDom.src= imgSrcArr[i];
+                (function(i){
+                    //console.log(i);
+                    imgDom.onload=function(){
+                        loadImgIndex++;
+                        // kanva 动画系统
+                        innerRect.to({
+                            width:maxWidth*(loadImgIndex/imgSrcArr.length),
+                            opacity:1,
+                            duration:5,
+                            esing:Konva.Easings.Linear
+                        });
+                    };
+                })(i);
             }
-        }
-
     </script>
 </body>
 </html>
