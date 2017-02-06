@@ -128,6 +128,67 @@
         })
     },L2_animateLayer);
     animate.start();
+//    L3动画层
+    var L3_animateLayer = new Konva.Layer();
+    stage.add(L3_animateLayer);
+    var L3_group = new Konva.Group({
+        x:cenX,
+        y:cenY
+    });
+    //    计算园环的坐标
+    var X0_L3= innnerRaduis*Math.cos(360*Math.PI/180);
+    var Y0_l3= innnerRaduis*Math.sin(360*Math.PI/180);
+    var L3_circle_React= new CircleText({
+        x:X0_L3,
+        y:Y0_l3,
+        innerRadius: 40,
+        outerRadius: 50,
+        outerStley:'#aaa',
+        innerStley:'#2cbdbd',
+        text:'React',
+        fontSize: 20,
+        fontColor:'#fff'
+    });
+    var X1_L3= innnerRaduis*Math.cos(240*Math.PI/180);
+    var Y1_l3= innnerRaduis*Math.sin(240*Math.PI/180);
+    var L3_circle_ES6 = new CircleText({
+        x:X1_L3,
+        y:Y1_l3,
+        innerRadius: 40,
+        outerRadius: 50,
+        outerStley:'#aaa',
+        innerStley:'#D80711',
+        text:'ES6',
+        fontSize: 20,
+        fontColor:'#fff'
+    });
+    var X2_L3= innnerRaduis*Math.cos(120*Math.PI/180);
+    var Y2_l3= innnerRaduis*Math.sin(120*Math.PI/180);
+    var L3_circle_angularJS= new CircleText({
+        x:X2_L3,
+        y:Y2_l3,
+        innerRadius: 40,
+        outerRadius: 50,
+        outerStley:'#aaa',
+        innerStley:'#f40',
+        text:'angularJS',
+        fontSize: 20,
+        fontColor:'#fff'
+    });
+    L3_circle_React.add(L3_group);
+    L3_circle_ES6.add(L3_group);
+    L3_circle_angularJS.add(L3_group);
+    L3_animateLayer.add(L3_group);
+    L3_animateLayer.draw();
+    var l3_rotateAnglePross = -60;
+    var L3_Anim= new  Konva.Animation(function(frame){
+           var  angleDiff = frame.timeDiff * l3_rotateAnglePross / 1000;
+            L3_group.rotate(angleDiff);
+            L3_group.getChildren().each(function(itme,index){
+                itme.rotate(-angleDiff);
+            })
+    },L3_animateLayer);
+    L3_Anim.start();
 </script>
 </body>
 </html>
