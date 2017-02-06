@@ -76,7 +76,7 @@ var  data =[
     });
     rectangleDome.render(ctx);//ctx:canvan上下文对象
  ```
- ### 5、CircleText(文字圆环)
+### 5、CircleText(文字圆环)
  ```javascript
  cenCircle = new CircleText({
          x:50,//横轴坐标
