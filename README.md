@@ -76,3 +76,17 @@ var  data =[
     });
     rectangleDome.render(ctx);//ctx:canvan上下文对象
  ```
+ ### 5、CircleText(文字圆环)
+ ```javascript
+ cenCircle = new CircleText({
+         x:50,//横轴坐标
+         y:50,//纵轴坐标
+         innerRadius: 100,//外圆变径
+         outerRadius: 150,//内圆变径
+         outerStley:'#ccc',//外圆颜色
+         innerStley:'#525ab2',//内圆颜色
+         text:'web开发',//文字信息
+         fontSize: 30,//字体大小
+         fontColor:'#fff'，//字体颜色
+     });
+ ```
