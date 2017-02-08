@@ -22,16 +22,19 @@
         width:window.innerWidth,
         height:window.innerHeight
     });
+    //创建层
+    var layer =new Konva.Layer();
+    stage.add(layer);
     //中心点坐标
     var cenX = stage.width()/2;
     var cenY = stage.height()/2;
-//    数据
+    //数据
     var  data= [
         {'profession':'前端','value':'.8','color':'green'},
         {'profession':'PHP','value':'.3','color':'blue'},
         {'profession':'Java','value':'.7','color':'red'},
-        {'profession':'UI','value':'.3,','color':'orage'},
-        {'profession':'IOS','value':'.4,','color':'purple'},
+        {'profession':'UI','value':'.5','color':'orage'},
+        {'profession':'IOS','value':'.6','color':'purple'},
         {'profession':'Android','value':'.9','color':'pink'}
     ];
 //    绘制底线
@@ -41,9 +44,73 @@
     var height = 1/2*stage.height();
     var bsLine = new  Konva.Line({
        points:[x0,y0,x0+width,y0],
-        strokeWidth:1,
-        stroke:'lightgreen'
-    })
+        strokeWidth:2,
+        stroke:'#000',
+        opacity:.5
+    });
+    layer.add(bsLine);
+    //定义矩形和矩形两边的边距的宽度
+    var RectWidth =width/data.length;
+    // 遍历每一天数据生成一个矩形
+    data.forEach(function(itme,index){
+        var rect =new  Konva.Rect({
+            x:x0+(1/4+index)*RectWidth,
+            y:y0-itme.value*height-2,
+            width:1/2*RectWidth,
+            height:itme.value*height,
+            fill:itme.color,
+            opacity:.8,
+            cornerRadius:2
+        });
+        layer.add(rect);
+
+//     百分比添加到头部
+        var text =new  Konva.Text({
+            x:x0+(1/4+index)*RectWidth,
+            y:y0-itme.value*height-30,
+            fontSize:18,
+            text:itme.value*100+'%',
+            fill:itme.color,
+            align:'center',
+            width:1/2*RectWidth,
+            name:'percentage'
+        });
+        layer.add(text);
+        //底部文字
+        var textBottom =new  Konva.Text({
+            x:x0+(1/4+index)*RectWidth,
+            y:y0-16,
+            fontSize:18,
+            text:itme.profession,
+            fill:itme.color,
+            align:'center',
+            width:1/2*RectWidth,
+            rotation:30
+        });
+        layer.add(textBottom)
+    });
+    layer.draw();
+    layer.find('Rect').each(function(item,index){
+        // 初始化参数
+        item.y(y0);
+        item.height(0);
+        // 动画
+          item.to({
+              duration:1,
+              y:y0-data[index].value*height,
+              height:data[index].value*height
+          })
+    });
+    layer.find('.percentage').each(function(item,index){
+            // 初始化方法
+            item.y(y0-18);
+            //动画
+            item.to({
+                duration:1,
+                y:y0-data[index].value*height-30
+            })
+        });
+
 </script>
 </body>
 </html>
