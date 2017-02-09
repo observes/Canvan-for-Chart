@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>pie</title>
+    <style>
+        body{
+            padding: 0;
+            margin: 0;
+            /*background-color: #eee;*/
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+    <script src="https://cdn.rawgit.com/konvajs/konva/1.3.0/konva.js"></script>
+<script>
+    //创建舞台
+    var stage = new  Konva.Stage({
+        container:'container',
+        width:window.innerWidth,
+        height:window.innerHeight
+    });
+    //创建层
+    var layer =new Konva.Layer();
+    stage.add(layer);
+    //中心点坐标
+    var cenX = stage.width()/2;
+    var cenY = stage.height()/2;
+    //数据
+    var  data= [
+        {'profession':'前端','value':'.25','color':'#f0f'},
+        {'profession':'PHP','value':'.2','color':'blue'},
+        {'profession':'Java','value':'.3','color':'red'},
+        {'profession':'UI','value':'.05','color':'#aaa'},
+        {'profession':'IOS','value':'.1','color':'purple'},
+        {'profession':'Android','value':'.1','color':'pink'}
+    ];
+//    扇形
+    var tempAngle = -90;
+    data.forEach(function(itme,index){
+        var wedge = new Konva.Wedge({
+            x:cenX,
+            y:cenY,
+            angle:360*itme.value,
+            radius:200,
+            fill:itme.color,
+            rotation:tempAngle
+        });
+        layer.add(wedge);
+        var textAngle = tempAngle+1/2*360*itme.value;
+        var text =new  Konva.Text({
+            x:cenX+(200+20)*Math.cos(Math.PI/180*textAngle),
+            y:cenY+(200+20)*Math.sin(Math.PI/180*textAngle),
+            text:itme.value*100+'%',
+            fill:itme.color,
+            fontSize:16
+        });
+        if(textAngle>90&&textAngle<270){
+            text.x(text.x()-text.getWidth());
+        }
+        layer.add(text);
+        tempAngle +=360*itme.value;
+    });
+    var cir=  new Konva.Circle({
+       x:cenX,
+        y:cenY,
+        radius:210,
+        stroke:'#aaa',
+        strokeWidth:2
+    });
+    layer.add(cir);
+    layer.draw();
+    //动画
+    var wedges= layer.find('Wedge');
+    wedges.each(function(item,index){
+        item.angle(0);
+    });
+    (function(){
+        var index =0;
+        function animatePie(){
+            var  item = wedges[index];
+            item.to({
+                angle:data[index].value*360,
+                duration:data[index].value*2,
+                onFinish:function(){
+                    index++;
+                    if(index==data.length){
+                        return;
+                    }
+                    animatePie();
+                }
+            });
+        }
+        animatePie();
+    })();
+</script>
+</body>
+</html>
