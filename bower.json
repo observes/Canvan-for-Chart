@@ -4,9 +4,7 @@
   "authors": [
     "Administrator <18200209182@163.com>"
   ],
-  "description": "''",
-  "main": "",
-  "license": "MIT",
+  "description": "canvas for dome",
   "ignore": [
     "**/.*",
     "node_modules",
